@@ -20,8 +20,10 @@ THREADS="${3:-2}"
 PYTHON=".venv/bin/python"
 MARKER=".venv/.requirements.sha256"
 
-if [ ! -x "$PYTHON" ]; then
+# A venv created without ensurepip (missing python3-venv) has no pip: start over.
+if [ ! -x "$PYTHON" ] || ! "$PYTHON" -m pip --version >/dev/null 2>&1; then
     echo "Creating virtual environment..."
+    rm -rf .venv
     python3 -m venv .venv
 fi
 
