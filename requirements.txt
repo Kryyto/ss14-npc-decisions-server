@@ -1,0 +1,3 @@
+# torch is installed separately by run_local (CPU wheel by default, CUDA with -Cuda / --cuda).
+thx01[server]==1.0.0
+python-dotenv>=1.0
